@@ -4,7 +4,7 @@ This project automates the emailing of reservation confirmation PDFs generated b
 
 ## 📊 Workflow Diagram
 
-![Automated Workflow Diagram](./img/Project-Workflow.png)
+![Automated Workflow Diagram](./img/workflow-diagram.drawio.png)
 
 > This diagram shows the process of saving PDFs, extracting guest emails, automatically sending confirmations, and manual fallback handling.
 
