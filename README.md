@@ -12,7 +12,7 @@ This project automates the emailing of reservation confirmation PDFs generated b
 - Monitors a folder for new PDFs
 - Extracts guest email using regex
 - Sends email via Microsoft 365 SMTP
-- Moves files without emails to a manual review folder
+- Maintains manual workflow if preferred
 - Designed for integration with `athdesk@caltech.edu` shared mailbox
 
 ## Requirements
