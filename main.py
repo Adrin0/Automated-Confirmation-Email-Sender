@@ -10,7 +10,6 @@ from watchdog.events import FileSystemEventHandler
 
 # --- Configuration ---
 WATCH_FOLDER = "./confirmations"
-FALLBACK_FOLDER = "./manual_review"
 SMTP_SERVER = "smtp.office365.com"
 SMTP_PORT = 587
 SMTP_USER = "athdesk@caltech.edu"
@@ -54,6 +53,10 @@ def send_email_with_attachment(to_email, pdf_path):
         server.send_message(msg)
         print(f"Email sent to {to_email}")
 
+def log_failure(pdf_path):
+    with open("sent_log.csv", "a") as log_file:
+        log_file.write(f"{os.path.basename(pdf_path)},No email found,{time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+
 
 # --- Watchdog Handler ---
 class PDFHandler(FileSystemEventHandler):
@@ -69,10 +72,8 @@ class PDFHandler(FileSystemEventHandler):
         if email:
             send_email_with_attachment(email, pdf_path)
         else:
-            os.makedirs(FALLBACK_FOLDER, exist_ok=True)
-            fallback_path = os.path.join(FALLBACK_FOLDER, os.path.basename(pdf_path))
-            os.rename(pdf_path, fallback_path)
-            print(f"No email found. Moved to {fallback_path} for manual review.")
+            print(f"No email found in {pdf_path}. Leaving for manual processing.")
+            log_failure(pdf_path)
 
 
 # --- Main Execution ---
