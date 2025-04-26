@@ -38,7 +38,6 @@ SMTP_PASSWORD=your_app_password
 
 ```plaintext
 confirmations/        # Watched folder for new PDFs
-manual_review/        # PDFs moved here if no email is found
 ```
 
 ## Usage
@@ -54,14 +53,13 @@ When a new PDF is saved to the `confirmations` folder, the script will:
 2. Generate a templated email
 3. Attach the PDF
 4. Send it from `athdesk@caltech.edu`
-5. Log success or move PDF to `manual_review` if no email is found
+5. Log successful and unsuccessful operations
 
 ## Microsoft 365 Setup
 
 Make sure SMTP is enabled and app passwords are allowed or use Microsoft Graph API for a more secure option.
 
 ## Future Enhancements
-- GUI interface for non-technical users
 - Integration with Microsoft Graph API
 - Azure deployment for 24/7 automation
 - Add guest name personalization
