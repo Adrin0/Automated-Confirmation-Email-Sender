@@ -14,7 +14,7 @@ from watchdog.events import FileSystemEventHandler
 WATCH_FOLDER = "./confirmations"  # Folder to watch for new PDF files
 SMTP_SERVER = "smtp.office365.com"  # SMTP server address
 SMTP_PORT = 587  # SMTP port for TLS
-SMTP_USER = "athdesk@caltech.edu"  # Email address used to send confirmations
+SMTP_USER = "email@domain.com"  # Email address used to send confirmations
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")  # Email account password loaded from environment variable
 
 # Check if SMTP password is set to avoid runtime errors
